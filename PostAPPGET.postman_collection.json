@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "c5faffd5-3dfd-4ffe-bea3-d0313c304104",
+		"name": "PostAPPGET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Conexão Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a5bc2ab-9567-4f03-80e7-447a00ffc131",
+						"exec": [
+							"let response = pm.response.status;",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"console.log(response);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postapp-compasso-api.herokuapp.com",
+					"protocol": "https",
+					"host": [
+						"postapp-compasso-api",
+						"herokuapp",
+						"com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Lista de Perfis Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a86325f-5084-4c4e-9f58-59ee062da233",
+						"exec": [
+							"pm.test(\"Teste de Resposta\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resposta foi mais rápida que 200 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "{{PostAPP}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://postapp-compasso-api.herokuapp.com/perfil",
+					"protocol": "https",
+					"host": [
+						"postapp-compasso-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Lista de Usuários Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a86325f-5084-4c4e-9f58-59ee062da233",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"let nomes = jsonData[0];",
+							"",
+							"pm.test(\"Teste de Resposta.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resposta foi mais rápida que 200 ms.\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"console.log(jsonData);",
+							"console.log(nomes);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{PostAPP}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://postapp-compasso-api.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"postapp-compasso-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Lista de Posts Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a86325f-5084-4c4e-9f58-59ee062da233",
+						"exec": [
+							"pm.test(\"Teste de Resposta\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resposta foi mais rápida que 200 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "{{PostAPP}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://postapp-compasso-api.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"postapp-compasso-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Lista de Cursos Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a86325f-5084-4c4e-9f58-59ee062da233",
+						"exec": [
+							"pm.test(\"Teste de Resposta\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Resposta foi mais rápida que 200 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "{{PostAPP}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://postapp-compasso-api.herokuapp.com/cursos",
+					"protocol": "https",
+					"host": [
+						"postapp-compasso-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"cursos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
